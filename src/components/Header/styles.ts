@@ -136,7 +136,7 @@ export const HeaderArea = styled.header<{cart: boolean, menu: boolean}>`
                     display: block
                 }
                 .nav--list {
-                    position: fixed;
+                    position: absolute;
                     width: ${props => props.menu ? '70vw' : '0px'};
                     left: 0px;
                     top: 90px;
@@ -144,7 +144,7 @@ export const HeaderArea = styled.header<{cart: boolean, menu: boolean}>`
                     background-color: #fff;
                     margin: auto;
                     flex-direction: column;
-                    transition: all ease 0.3s;
+                    transition: all ease 0.2s;
                     padding: 0px;
                     li {
                         display: ${props => props.menu ? 'block' : 'none'};

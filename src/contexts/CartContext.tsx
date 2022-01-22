@@ -1,10 +1,13 @@
 import { createContext, useReducer } from "react";
 import { CartType, cartInitialState, cartReducer } from '../reducers/CartReducer'
+import { MenuType, menuInitialState, menuReducer } from '../reducers/MenuReducer'
+
 import { reducerActionTypes } from "../types/reducerActionTypes";
 
 
 type initialStateType = {
     cart: CartType,
+    menu: MenuType
 }
 
 type ContextType = {
@@ -14,6 +17,7 @@ type ContextType = {
 
 const initialState = {
     cart: cartInitialState,
+    menu: menuInitialState
 }
 
 export const Context = createContext<ContextType>({
@@ -22,7 +26,8 @@ export const Context = createContext<ContextType>({
 })
 
 const mainReducer = (state: initialStateType, action: reducerActionTypes) => ({
-    cart: cartReducer(state.cart, action)
+    cart: cartReducer(state.cart, action),
+    menu: menuReducer(state.menu, action)
 })
 
 export const ContextProvider: React.FC = ({ children }) => {

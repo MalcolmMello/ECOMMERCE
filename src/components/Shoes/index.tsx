@@ -31,6 +31,8 @@ export const Shoes = () => {
     const [qt, setQt] = useState(0)
     const [total, setTotal] = useState(0)
 
+    const showArrow = state.menu.open
+
     useEffect(()=>{
         setTotal(qt*price)
     },[qt])
@@ -89,7 +91,7 @@ export const Shoes = () => {
     }
 
     return (
-        <C.ShoesArea>
+        <C.ShoesArea show={showArrow}>
             <div className='container'>
                 <div className='shoes--pictures'>
                     <div className='mobile--pictures'>

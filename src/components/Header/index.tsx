@@ -11,7 +11,7 @@ import { useContext, useState } from 'react'
 export const Header = () => {
     const { state, dispatch } = useContext(Context)
     const [cartIsOpen, setCartIsOpen] = useState(false)
-    const [menuIsOpen, setMenuIsOpen] = useState(false)
+    const [menuIsOpen, setMenuIsOpen] = useState(state.menu.open)
 
     const openCart = () => {
         setCartIsOpen(!cartIsOpen)
@@ -30,16 +30,26 @@ export const Header = () => {
         })
     }
 
+    const menu = () => {
+        dispatch({
+            type: 'UPDATE_MENU',
+            payload: {
+                open: !state.menu.open
+            }
+        })
+        setMenuIsOpen(state.menu.open)
+    }
+
     return (
         <C.HeaderArea cart={cartIsOpen} menu={menuIsOpen}>
             <div className='container'>
                 <nav>
                     <div className='menu--buttons'>
                         {!menuIsOpen &&
-                            <img src={iconMenu} alt="" className='iconMenu' onClick={() => setMenuIsOpen(!menuIsOpen)}/>
+                            <img src={iconMenu} alt="" className='iconMenu' onClick={menu}/>
                         }
                         {menuIsOpen &&
-                            <img src={iconClose} alt="" className='iconMenu' onClick={() => setMenuIsOpen(!menuIsOpen)}/>
+                            <img src={iconClose} alt="" className='iconMenu' onClick={menu}/>
                         }
                         <img src={ logo } alt="" />
                     </div>

@@ -29,6 +29,7 @@ export const cartReducer = (state: CartType, action: reducerActionTypes) => {
         break
         case 'UPDATE_CART':
             return{...state, qt: action.payload.qt, total: action.payload.total }
+        break
     }
 
     return state

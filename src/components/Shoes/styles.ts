@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ShoesArea = styled.main`
+export const ShoesArea = styled.main<{show: boolean}>`
     height: calc(100vh - 91px);
 
     .container {
@@ -180,11 +180,13 @@ export const ShoesArea = styled.main`
                         display: block
                     }
                     .previous {
+                        display: ${props => props.show ? 'block' : 'none'};
                         position: fixed;
                         left: 0px;
                         cursor: pointer
                     }
                     .next {
+                        display: ${props => props.show ? 'block' : 'none'};
                         position: fixed;
                         right: 0px;
                         cursor: pointer

@@ -2,6 +2,8 @@ import * as C from './styles'
 import profilePic from '../../assets/image-avatar.png'
 import iconCart from '../../assets/icon-cart.svg'
 import iconDelete from '../../assets/icon-delete.svg'
+import iconMenu from '../../assets/icon-menu.svg'
+import iconClose from '../../assets/icon-close.svg'
 import logo from '../../assets/logo.svg'
 import { Context } from '../../contexts/CartContext'
 import { useContext, useState } from 'react'
@@ -9,6 +11,7 @@ import { useContext, useState } from 'react'
 export const Header = () => {
     const { state, dispatch } = useContext(Context)
     const [cartIsOpen, setCartIsOpen] = useState(false)
+    const [menuIsOpen, setMenuIsOpen] = useState(false)
 
     const openCart = () => {
         setCartIsOpen(!cartIsOpen)
@@ -28,11 +31,19 @@ export const Header = () => {
     }
 
     return (
-        <C.HeaderArea cart={cartIsOpen}>
+        <C.HeaderArea cart={cartIsOpen} menu={menuIsOpen}>
             <div className='container'>
                 <nav>
-                    <img src={ logo } alt="" />
-                    <ul>
+                    <div className='menu--buttons'>
+                        {!menuIsOpen &&
+                            <img src={iconMenu} alt="" className='iconMenu' onClick={() => setMenuIsOpen(!menuIsOpen)}/>
+                        }
+                        {menuIsOpen &&
+                            <img src={iconClose} alt="" className='iconMenu' onClick={() => setMenuIsOpen(!menuIsOpen)}/>
+                        }
+                        <img src={ logo } alt="" />
+                    </div>
+                    <ul className='nav--list'>
                         <li>Collections</li>
                         <li>Men</li>
                         <li>Women</li>

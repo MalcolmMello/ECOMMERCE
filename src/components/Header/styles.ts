@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderArea = styled.header<{cart: boolean}>`
+export const HeaderArea = styled.header<{cart: boolean, menu: boolean}>`
     border-bottom: 1px solid #ccc;
 
     .container {
@@ -40,6 +40,19 @@ export const HeaderArea = styled.header<{cart: boolean}>`
                 li:hover {
                     border-bottom: 3px solid hsl(26, 100%, 55%)
                 }
+            }
+
+            .menu--buttons {
+                display: flex;
+                align-items: center;
+            }
+
+            .iconMenu {
+                display: none;
+                height: 20px;
+                width: 20px;
+                margin-right: 10px;
+                cursor: pointer;
             }
         }
 
@@ -119,8 +132,27 @@ export const HeaderArea = styled.header<{cart: boolean}>`
     @media(max-width: 768px) {
         .container {
             nav {
-                ul {
-                    display: none
+                .iconMenu {
+                    display: block
+                }
+                .nav--list {
+                    position: fixed;
+                    width: ${props => props.menu ? '70vw' : '0px'};
+                    left: 0px;
+                    top: 90px;
+                    height: calc(100vh - 90px);
+                    background-color: #fff;
+                    margin: auto;
+                    flex-direction: column;
+                    transition: all ease 0.3s;
+                    padding: 0px;
+                    li {
+                        display: ${props => props.menu ? 'block' : 'none'};
+                        margin: 0px;
+                        height: auto;
+                        font-weight: bold;
+                        padding: 10px 20px;
+                    }
                 }
             }
         }

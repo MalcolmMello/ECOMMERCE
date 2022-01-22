@@ -180,12 +180,12 @@ export const ShoesArea = styled.main`
                         display: block
                     }
                     .previous {
-                        position: absolute;
+                        position: fixed;
                         left: 0px;
                         cursor: pointer
                     }
                     .next {
-                        position: absolute;
+                        position: fixed;
                         right: 0px;
                         cursor: pointer
                     }

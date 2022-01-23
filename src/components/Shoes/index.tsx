@@ -127,12 +127,12 @@ export const Shoes = () => {
             <div className='container'>
                 <div className='shoes--pictures'>
                     <div className='mobile--pictures'>
-                        <div className='left'>
-                            <img src={ previous } alt="previous" className='previous' onClick={handlePrevious}/>
+                        <div className='left' onClick={handlePrevious}>
+                            <img src={ previous } alt="previous" className='previous' />
                         </div>
                         <img src={ slide } alt="shoe image" className='main--picture' onClick={openModal}/>
-                        <div className='right'>
-                            <img src={ next } alt="next" className='next' onClick={handleNext}/>
+                        <div className='right' onClick={handleNext}>
+                            <img src={ next } alt="next" className='next' />
                         </div>
                     </div>
                     <div className='shoes--items'>

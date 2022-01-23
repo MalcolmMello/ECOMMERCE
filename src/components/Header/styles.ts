@@ -59,6 +59,20 @@ export const HeaderArea = styled.header<{cart: boolean, menu: boolean}>`
         .profile {
             display: flex;
             align-items: center;
+            .qt--cart {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 15px;
+                width: 15px;
+                border-radius: 50%;
+                background: #de7438;
+                color: #FFF;
+                font-size: 10px;
+                margin-right: -50px;
+                margin-top: -20px;
+                position: absolute
+            }
             .cart {
                 width: 20px;
                 height: 20px;
@@ -70,6 +84,11 @@ export const HeaderArea = styled.header<{cart: boolean, menu: boolean}>`
                 width: 50px;
                 height: 50px;
                 cursor: pointer;
+                border-radius: 50%;
+
+                &:hover {
+                    border: 3px solid #de7438
+                }
             }
         }
     }

@@ -16,8 +16,11 @@ import { useContext, useEffect, useState } from 'react'
 
 export const Shoes = () => {
     const { state, dispatch } = useContext(Context)
+    
     const price = 125
     
+    const [isActive, setIsActive] = useState(0)
+
     const [numberSlide, setNumberSlide] = useState(0)
 
     const productsPics = [
@@ -90,20 +93,53 @@ export const Shoes = () => {
         }
     }
 
+    const openModal = () => {
+        dispatch({
+            type: 'DECIDE_MODAL',
+            payload: {
+                modalopen: true
+            }
+        })
+    }
+
+    const img1 = () => {
+        setSlide(productsPics[0])
+        setIsActive(0)
+    }
+
+    const img2 = () => {
+        setSlide(productsPics[1])
+        setIsActive(1)
+    }
+
+    const img3 = () => {
+        setSlide(productsPics[2])
+        setIsActive(2)
+    }
+
+    const img4 = () => {
+        setSlide(productsPics[3])
+        setIsActive(3)
+    }
+
     return (
         <C.ShoesArea show={showArrow}>
             <div className='container'>
                 <div className='shoes--pictures'>
                     <div className='mobile--pictures'>
-                        <img src={ previous } alt="previous" className='previous' onClick={handlePrevious}/>
-                        <img src={ slide } alt="shoe image" className='main--picture'/>
-                        <img src={ next } alt="next" className='next' onClick={handleNext}/>
+                        <div className='left'>
+                            <img src={ previous } alt="previous" className='previous' onClick={handlePrevious}/>
+                        </div>
+                        <img src={ slide } alt="shoe image" className='main--picture' onClick={openModal}/>
+                        <div className='right'>
+                            <img src={ next } alt="next" className='next' onClick={handleNext}/>
+                        </div>
                     </div>
                     <div className='shoes--items'>
-                        <img src={ product1thumb } alt="shoe picture1" onClick={() => setSlide(productsPics[0])}/>
-                        <img src={ product2thumb } alt="shoe picture2" onClick={() => setSlide(productsPics[1])}/>
-                        <img src={ product3thumb } alt="shoe picture3" onClick={() => setSlide(productsPics[2])}/>
-                        <img src={ product4thumb } alt="shoe picture4" onClick={() => setSlide(productsPics[3])}/>
+                        <img src={ product1thumb } className={isActive === 0 ? 'active' : ''} alt="shoe picture1" onClick={img1}/>
+                        <img src={ product2thumb } className={isActive === 1 ? 'active' : ''} alt="shoe picture2" onClick={img2}/>
+                        <img src={ product3thumb } className={isActive === 2 ? 'active' : ''} alt="shoe picture3" onClick={img3}/>
+                        <img src={ product4thumb } className={isActive === 3 ? 'active' : ''} alt="shoe picture4" onClick={img4}/>
                     </div>
                 </div>
                 <div className='shoes--info'>

@@ -1,5 +1,14 @@
 import styled from "styled-components";
-
+/*div {
+                    display: flex; 
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #FFF;
+                    cursor: pointer;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 50%
+                } */
 export const ShoesArea = styled.main<{show: boolean}>`
     height: calc(100vh - 91px);
 
@@ -30,6 +39,7 @@ export const ShoesArea = styled.main<{show: boolean}>`
 
         .main--picture {
             width: 100%;
+            cursor: pointer
         }
 
         .shoes--items {
@@ -41,7 +51,16 @@ export const ShoesArea = styled.main<{show: boolean}>`
             
             img {
                 width: 100%;
-                cursor: pointer
+                cursor: pointer;
+            }
+
+            img:hover {
+                opacity: 85%
+            }
+
+            .active {
+                border: 2px solid hsl(26, 100%, 55%);
+                opacity: 85%
             }
         }
     }
@@ -100,10 +119,16 @@ export const ShoesArea = styled.main<{show: boolean}>`
             border-radius: 10px;
             cursor: pointer;
             margin-left: 10px;
+            transition: all ease 0.2s;
+
+            &:hover {
+                opacity: 70%;
+                box-shadow: 1px 1px 0.5em #de7438
+            }
         }
     }
 
-    @media(max-width: 768px) {
+    @media(max-width: 982px) {
         .container {
             width: 100%;
 
@@ -179,17 +204,29 @@ export const ShoesArea = styled.main<{show: boolean}>`
                     .previous, .next {
                         display: block
                     }
-                    .previous {
-                        display: ${props => props.show ? 'block' : 'none'};
-                        position: fixed;
-                        left: 0px;
-                        cursor: pointer
-                    }
-                    .next {
-                        display: ${props => props.show ? 'block' : 'none'};
-                        position: fixed;
+                    div {
+                        display: flex; 
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #FFF;
+                        cursor: pointer;
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 50%;
+                        position: absolute;
                         right: 0px;
-                        cursor: pointer
+                        cursor: pointer;
+                    }
+                    .previous {
+                        
+                    }
+                    .right {
+                        display: ${props => props.show ? 'none' : 'flex'};
+                        right: 0px;
+                    }
+                    .left {
+                        display: ${props => props.show ? 'none' : 'flex'};
+                        left: 0px
                     }
                 }
                 padding: 0px;

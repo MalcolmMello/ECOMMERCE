@@ -11,7 +11,7 @@ import { useContext, useState } from 'react'
 export const Header = () => {
     const { state, dispatch } = useContext(Context)
     const [cartIsOpen, setCartIsOpen] = useState(false)
-    const [menuIsOpen, setMenuIsOpen] = useState(state.menu.open)
+    const menuIsOpen= state.menu.open
 
     const openCart = () => {
         setCartIsOpen(!cartIsOpen)
@@ -37,7 +37,6 @@ export const Header = () => {
                 open: !state.menu.open
             }
         })
-        setMenuIsOpen(state.menu.open)
     }
 
     return (
@@ -63,6 +62,11 @@ export const Header = () => {
                 </nav>
                 <div className='profile'>
                     <img src={ iconCart } alt="" className='cart' onClick={openCart}/>
+                    {state.cart.qt > 0 &&
+                        <div className='qt--cart'>
+                            {state.cart.qt}
+                        </div>
+                    }
                     <img src={ profilePic } alt="" className='profile--picture'/>
                 </div>
             </div>
